@@ -1,10 +1,18 @@
 from flask import Flask, render_template, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
+from models import db 
 
 app = Flask(__name__)
 app.config.from_object(Config)
 app.secret_key = "secretkey"
+
+# Initialize db with the app
+db.init_app(app)
+
+# Create tables (Flask 3 way)
+with app.app_context():
+    db.create_all()
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
