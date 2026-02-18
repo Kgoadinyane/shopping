@@ -1,7 +1,9 @@
 from flask import Flask, render_template, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
 app.secret_key = "secretkey"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
