@@ -17,8 +17,6 @@ with app.app_context():
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///store.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
-
 # ----------------------
 # Database Model
 # ----------------------
